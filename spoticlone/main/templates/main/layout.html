@@ -1,0 +1,48 @@
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no,
+     initial-scale=1.0,maximum-scale=1.0">
+    <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+
+
+</head>
+<body>
+    <aside>
+    <aside1>
+        <!--<span class="logo">spoti</span>
+        <img src="{% static 'main/img/1801287.svg' %}" alt="logo" width="35%" height="35%">
+
+        <h3>Navigation</h3>-->
+        <ul>
+            <a href="{% url 'home' %}"><li><i class="fas fa-home"></i>Home</li></a>
+            <a href="{% url 'about' %}"><li><i class="fas fa-address-card"></i>About Us</li></a>
+            <a href=""><li><i class="far fa-clock"></i>Recently Played</li></a>
+            <a href=""><li><i class="far fa-heart"></i>Liked Songs</li></a>
+            <a href=""><li><i class="fas fa-paper-plane"></i>Contacts</li></a>
+        </ul>
+    </aside1>
+
+    </aside>
+    <main>
+        <h1 class="auth">
+            <i class="fas fa-user-circle"></i>
+            Sign Up/Register
+        </h1>
+        {% block content%}
+
+
+        {% endblock %}
+        <p>
+        <audio controls>
+        <source src="{% static 'main/mp3/05_Ghost_Of_Karelia.mp3' %}" type="audio/mp3">
+        </audio>
+        </p>
+    </main>
+</body>
+</html>
