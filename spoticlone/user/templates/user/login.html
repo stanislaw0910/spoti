@@ -1,0 +1,36 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock%}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+{% endblock %}
+{% block content %}
+
+  <div class="container">
+    <h1>Sign In</h1>
+    <p>Please fill in this form to enter your account.</p>
+    <hr>
+    <!--
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+    <br>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required> -->
+
+    {% csrf_token %}
+    {{ form.username }}
+    <br>
+    {{ form.password }}
+    <br>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+    Don't have an account yet?<a href="{% url 'registration' %}">Sign Up</a>
+
+
+    <div class="clearfix">
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+{% endblock %}
