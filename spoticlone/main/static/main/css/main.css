@@ -37,7 +37,8 @@ aside h3 {
     font-size: 35px;
 }
 
-aside ul { list-style:none
+aside ul {
+list-style:none
 }
 aside ul li {
     font-weight: 700;
@@ -51,6 +52,8 @@ aside ul li:hover, aside ul a:hover {
     text-decoration: none;
     transform: scale(1.05);
 }
+
+
 main .features {
     float:left;
     color: #fff;
@@ -58,14 +61,32 @@ main .features {
     text-align: center;
     width: 75%;
 }
+main {
+    color:#fff;
+}
 main .features h1 { font-size: 50px;}
 main .features p {max-width: 400px; margin: 20px auto;}
+main .auth a{
+
+    font-weight: 700;
+    color: #c0c0c0;
+    display: block;
+    margin-right:2%;
+    transition: transform .2s ease;
+}
+main .auth a:hover{
+    color:#008000;
+    text-decoration: none;
+    transform: scale(1.05);
+
+}
 main .auth{
     font-size:large;
     font-weight: 700;
     text-align:right;
     color:#c0c0c0;
     margin-right:10px;
+
 }
 .alert-warning {
     float: left;

@@ -2,7 +2,11 @@ import os
 import glob
 import eyed3
 
-os.chdir(os.path.join(os.getcwd(), '2009 - Crack The Skye/CD 1'))
+os.chdir(os.path.join(os.getcwd(), '2009_-_Crack_The_Skye/CD_1'))
+path = os.getcwd()
+filenames = os.listdir(path)
+for filename in filenames:
+    os.rename(os.path.join(path, filename), os.path.join(path, filename.replace(' ', '_')))
 mp3_dir = []
 image = ''
 for file in glob.glob("*.jpg"):
@@ -22,7 +26,7 @@ for name in mp3_dir:
                                                                         audiofile.tag.album, \
                                                                         audiofile.tag.title, \
                                                                         audiofile.tag.track_num[0], \
-                                                                        tuple(str(audiofile.tag.genre).split(' / ')), \
+                                                                        tuple(str(audiofile.tag.genre).split(' / '))[0], \
                                                                         str(audiofile.tag.recording_date),\
                                                                         image,\
                                                                         name[1]

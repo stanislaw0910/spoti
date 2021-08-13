@@ -1,10 +1,10 @@
 {% extends 'main/layout.html' %}
 {% block title %}{{title}}{% endblock%}
 {% block content %}
+
     <div class="features">
         <h1>{{title}}</h1>
         <p>Welcome!</p>
-        <button class="btn btn-warning">To About Us page</button>
 
         {% for el in news %}
             <p>{{ el }}</p>
