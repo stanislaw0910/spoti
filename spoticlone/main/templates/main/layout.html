@@ -30,7 +30,7 @@
     <main>
         {% if request.path != '/login' %}
             <h1 class="auth">
-                <a href="{% url 'login' %}"><i class="fas fa-user-circle"></i> Sign in/Sign up</a>
+                <a href="{% url 'user/login' %}"><i class="fas fa-user-circle"></i> Sign in/Sign up</a>
             </h1>
         {% endif %}
 
