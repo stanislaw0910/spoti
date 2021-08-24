@@ -15,11 +15,12 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'main/about.html')
-
     '''if request.user.is_authenticated():
         pass
     else:
         return redirect('user/login')'''
+    return render(request, 'main/about.html')
+
+
 
 
