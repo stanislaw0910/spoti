@@ -7,12 +7,16 @@ from django.contrib import messages
 # Create your views here.
 
 
+def user_page(request):
+    return render(request, 'user/user_page.html')
+
+
 def login(request):
     form = LoginForm()
     data = {
         'form': form,
     }
-    return render(request, 'main/login.html', data)
+    return render(request, 'user/login.html', data)
 
 
 def user_login(request):
@@ -47,10 +51,10 @@ def registration(request):
     data = {
         'form': form,
     }
-    return render(request, 'main/index.html', data)
+    return render(request, 'user/registration.html', data)
 
 
 '''def registration_request(request):
 
-    return render(request, 'main/index.html')'''
+    return render(request, 'user/registration.html')'''
 

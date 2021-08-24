@@ -1,10 +1,8 @@
-# Create your views here.
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Songs
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-# Create your views here.
 
 
 def index(request):
@@ -19,8 +17,9 @@ def index(request):
 def about(request):
     return render(request, 'main/about.html')
 
+    '''if request.user.is_authenticated():
+        pass
+    else:
+        return redirect('user/login')'''
 
-'''def registration_request(request):
-
-    return render(request, 'main/index.html')'''
 

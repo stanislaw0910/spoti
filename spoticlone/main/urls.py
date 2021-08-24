@@ -9,7 +9,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name='home'),
     path('about', views.about, name='about'),
-    path('login', views.login, name='login'),
 
     ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT
