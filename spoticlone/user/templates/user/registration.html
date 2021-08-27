@@ -14,14 +14,10 @@
     <hr>
     <form method="post">
     {% csrf_token %}
-    {{ form.username }}
-    <br>
-    {{ form.email}}
-    <br>
-    {{ form.password1 }}
-    <br>
-    {{ form.password2 }}
-    <br>
+      <table border="1">
+        {{form}}
+      </table>
+
     <div class="clearfix">
       <button class="btn btn-success" type="submit" >Add</button>
     </div>

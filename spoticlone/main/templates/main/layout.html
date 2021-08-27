@@ -28,11 +28,16 @@
 
     </aside>
     <main>
-        {% if request.path != '/login' %}
-            <h1 class="auth">
-                <a href="{% url 'user' %}"><i class="fas fa-user-circle"></i> Sign in/Sign up</a>
-            </h1>
-        {% endif %}
+        <h1 class="auth">
+            <a href="{% url 'user' %}"><i class="fas fa-user-circle"></i>
+                {% if request.user.is_authenticated %}
+                {{request.user.get_username}}
+                {% else %}
+                Sign In
+                {% endif %}
+            </a>
+        </h1>
+
 
         {% block content%}
 
@@ -44,7 +49,7 @@
 
         {% for item in songs %}
             {{ item.artist }}
-            <img src="{{ item.cover.url }}" width="250" height="250">
+            <img src="{{ item.cover.url }}" width="75" height="75">
         <audio controls>
             <source src="{{ item.path.url }}" type="audio/mp3">
         </audio>

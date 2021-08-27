@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock%}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+{% endblock %}
+{% block content %}
   Some info of u
-</body>
-</html>
+  <a href="{% url 'logout' %}">LogOut</a>
+{% endblock %}
+

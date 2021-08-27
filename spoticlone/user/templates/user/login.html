@@ -11,17 +11,23 @@
     <h1>Sign In</h1>
     <p>Please fill in this form to enter your account.</p>
     <hr>
-
+    <form method="post">
     {% csrf_token %}
     {{ form.username }}
     <br>
     {{ form.password }}
     <br>
-    Don't have an account yet?<a href="{% url 'registration' %}">Sign Up</a>
-
+    Don't have an account yet?<a href="{% url 'signup' %}">Sign Up</a>
 
     <div class="clearfix">
-      <button type="submit" class="signupbtn">Sign Up</button>
+      <button type="submit">Sign In</button>
     </div>
+    {% if request.user.is_authenticated %}
+        {{request.user.get_username}}
+        <a href="{% url 'logout' %}">LogOut</a>
+    {% else %}
+      need to login
+    {% endif %}
+    </form>
   </div>
 {% endblock %}

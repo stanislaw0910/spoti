@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock%}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+{% endblock %}
+{% block content %}
+
+  <div class="container">
+    <h1>Sign In</h1>
+    <p>Please fill in this form to enter your account.</p>
+    <hr>
+
+    {% csrf_token %}
+    {{ form.username }}
+    <br>
+    {{ form.password }}
+    <br>
+    Don't have an account yet?<a href="{% url 'registration' %}">Sign Up</a>
+
+
+    <div class="clearfix">
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+{% endblock %}

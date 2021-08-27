@@ -1,60 +1,60 @@
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from spoticlone.user.forms import NewUserForm, LoginForm
-from django.contrib.auth import authenticate, login
+from .forms import NewUserForm, LoginForm
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 # Create your views here.
+from django.contrib.auth.forms import UserCreationForm
 
 
 def user_page(request):
-    return render(request, 'user/user_page.html')
+    if request.user.is_authenticated:
+        return render(request, 'user/user_page.html')
+    else:
+        return redirect('login')
 
 
-def login(request):
-    form = LoginForm()
-    data = {
-        'form': form,
-    }
-    return render(request, 'user/login.html', data)
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'user/signup.html', {'form': form})
 
 
-def user_login(request):
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+
+
+def signin(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(username=cd['username'], password=cd['password'])
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
             if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponse('Authenticated successfully')
-                else:
-                    return HttpResponse('Disabled account')
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username}.")
+                return redirect('home')
             else:
-                return HttpResponse('Invalid login')
+                print('WRONG')
+                messages.error(request, "Invalid username or password.")
+        else:
+            messages.error(request, "Invalid username or password.")
     else:
         form = LoginForm()
-    return render(request, 'main/index.html', {'form': form})
+    return render(request, 'user/login.html', {'form': form})
 
 
-def registration(request):
-    if request.method == "POST":
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, "Registration successful")
-            return redirect("home")
-        messages.error(request, "Unsuccessful registration.Invalid information")
-    form = NewUserForm()
-    data = {
-        'form': form,
-    }
-    return render(request, 'user/registration.html', data)
 
-
-'''def registration_request(request):
-
-    return render(request, 'user/registration.html')'''
 

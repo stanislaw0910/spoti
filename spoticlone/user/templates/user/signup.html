@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock%}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+{% endblock %}
+{% block content %}
+
+  <div class="container">
+    <h2>Sign up</h2>
+      <form method="post">
+        {% csrf_token %}
+        <table border="1">
+        {{ form.as_p }}
+        </table>
+        <button type="submit">Sign up</button>
+      </form>
+  </div>
+{% endblock %}
