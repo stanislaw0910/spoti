@@ -7,9 +7,9 @@ class Songs(models.Model):
     artist = models.TextField(max_length=50)
     album = models.TextField(max_length=50)
     title = models.TextField(max_length=50)
-    track_num = models.IntegerField()
+    track_num = models.IntegerField(max_length=2)
     genre = models.TextField(max_length=50)
-    recording_date = models.IntegerField()
+    recording_date = models.IntegerField(max_length=4)
     cover = models.FileField(upload_to='uploads/')
     path = models.FileField(upload_to='uploads/')
 
