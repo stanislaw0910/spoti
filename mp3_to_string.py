@@ -7,39 +7,36 @@ import eyed3
 
 
 def duration_from_seconds(s):
-    s = s
-    m, s = divmod(s, 60)
-    timelapse = "{:01d}:{:02d}".format(int(m),
-                                       int(s))
+    s=s
+    m, s=divmod(s, 60)
+    timelapse="{:01d}:{:02d}".format(int(m),
+                                     int(s))
     return timelapse
 
 
-os.chdir(os.path.join(os.getcwd(), '2009_-_Crack_The_Skye/CD_1'))
-path = os.getcwd()
-'''filenames = os.listdir(path)
-for filename in filenames:
-    os.rename(os.path.join(path, filename), os.path.join(path, filename.replace(' ', '_')))'''
-mp3_dir = []
-'''image = ''
-for file in glob.glob("*.jpg"):
-    image = os.path.abspath(file)'''
-for file in glob.glob("*.mp3"):
-    mp3_dir.append((file, os.path.abspath(file)))
-mp3_dir.sort()
-for name in mp3_dir:
-    audiofile = eyed3.load(name[0])
-    eyed3.log.setLevel("ERROR")
-    duration = audiofile.info.time_secs
-    mp3_data = (
-        artist, album, title, track_num, duration, genre,
-        recording_date, path, cover,) = audiofile.tag.artist, \
-                                        audiofile.tag.album, \
-                                        audiofile.tag.title, \
-                                        audiofile.tag.track_num[0], \
-                                        duration_from_seconds(duration), \
-                                        tuple(str(audiofile.tag.genre).split(' / '))[0], \
-                                        str(audiofile.tag.recording_date), \
-                                        name[1], \
-                                        audiofile.tag.images[0].image_data, \
+def main_func(work_dir='2009_-_Crack_The_Skye/CD_1'):
+    os.chdir(os.path.join(os.getcwd(), work_dir))
+    path=os.getcwd()
+    mp3_dir=[]
+    for file in glob.glob("*.mp3"):
+        mp3_dir.append((file, os.path.abspath(file)))
+    mp3_dir.sort()
+    song_list = []
+    for name in mp3_dir:
+        audiofile=eyed3.load(name[0])
+        eyed3.log.setLevel("ERROR")
+        duration=audiofile.info.time_secs
+        mp3_data=audiofile.tag.artist, \
+                 audiofile.tag.album, \
+                 audiofile.tag.title, \
+                 audiofile.tag.track_num[0], \
+                 duration_from_seconds(duration), \
+                 tuple(str(audiofile.tag.genre).split(' / '))[0], \
+                 str(audiofile.tag.recording_date), \
+                 name[1], \
+                 audiofile.tag.images[0].image_data
+        song_list.append(mp3_data[:-1])
+    print(song_list)
 
-    print(mp3_data[:-1])
+if __name__ == "__main__":
+    main_func()
