@@ -7,36 +7,39 @@ import eyed3
 
 
 def duration_from_seconds(s):
-    s=s
-    m, s=divmod(s, 60)
-    timelapse="{:01d}:{:02d}".format(int(m),
-                                     int(s))
+    s = s
+    m, s = divmod(s, 60)
+    timelapse = "{:01d}:{:02d}".format(int(m), int(s))
     return timelapse
 
 
 def main_func(work_dir='2009_-_Crack_The_Skye/CD_1'):
+    cwd = os.getcwd()
     os.chdir(os.path.join(os.getcwd(), work_dir))
-    path=os.getcwd()
     mp3_dir=[]
     for file in glob.glob("*.mp3"):
         mp3_dir.append((file, os.path.abspath(file)))
     mp3_dir.sort()
     song_list = []
+    os.chdir(cwd)
+    f = open('soundlist.txt', 'w')
+    os.chdir(work_dir)
     for name in mp3_dir:
-        audiofile=eyed3.load(name[0])
+        audiofile = eyed3.load(name[0])
         eyed3.log.setLevel("ERROR")
-        duration=audiofile.info.time_secs
-        mp3_data=audiofile.tag.artist, \
-                 audiofile.tag.album, \
-                 audiofile.tag.title, \
-                 audiofile.tag.track_num[0], \
-                 duration_from_seconds(duration), \
-                 tuple(str(audiofile.tag.genre).split(' / '))[0], \
-                 str(audiofile.tag.recording_date), \
-                 name[1], \
-                 audiofile.tag.images[0].image_data
+        duration = audiofile.info.time_secs
+        mp3_data = audiofile.tag.artist, \
+                   audiofile.tag.album, \
+                   audiofile.tag.title, \
+                   str(audiofile.tag.track_num[0]), \
+                   duration_from_seconds(duration), \
+                   tuple(str(audiofile.tag.genre).split(' / '))[0], \
+                   str(audiofile.tag.recording_date), \
+                   name[1], \
+                   audiofile.tag.images[0].image_data
+        f.write(' , '.join(mp3_data[:-1]) + '\n')
         song_list.append(mp3_data[:-1])
+    f.close()
     print(song_list)
-
 if __name__ == "__main__":
     main_func()

@@ -47,15 +47,16 @@
 
         <div class="songs">
             <table border="1">
-                {% for item in songs %}
-                    {{ item.artist }}
-                    <img src="{{ item.cover.url }}" width="75" height="75">
+                {% for item in sounds %}
+                    {{ item.title }}
+
                 <audio controls>
                     <source src="{{ item.path.url }}" type="audio/mp3">
                 </audio>
             </table>
         </div>
         {% endfor %}
+
         </p>
     </main>
 </body>
