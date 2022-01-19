@@ -5,6 +5,7 @@ from django.db import models
 class Sounds(models.Model):
     title = models.TextField(max_length=50)
     path = models.FileField()
+    artist = models.TextField(max_length=50, default="Untitled Artist")
 
     def __str__(self):
         return self.title

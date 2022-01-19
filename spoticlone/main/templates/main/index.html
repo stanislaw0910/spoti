@@ -6,8 +6,6 @@
         <h1>{{title}}</h1>
         <p>Welcome {{request.user.get_username}}!</p>
 
-        {% for el in news %}
-            <p>{{ el }}</p>
-        {% endfor %}
+
     </div>
 {% endblock %}
