@@ -5,4 +5,8 @@
     <h1>About us</h1>
     <p>About us</p>
     </div>
+    {% for song in songs %}
+        <img src="song.file">
+        {{ song.file }}
+    {% endfor %}
 {% endblock %}

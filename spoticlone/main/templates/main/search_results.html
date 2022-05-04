@@ -2,5 +2,10 @@
 {% block title %}{{title}}{% endblock%}
 {% block content %}
  <h1>Search Results Will Be Here Soon</h1>
-
+{% for item in songs %}
+  {{ item.title }}
+    <audio controls>
+        <source src="{{ item.path.url }}" type="audio/mp3">
+    </audio>
+{% endfor %}
 {% endblock %}

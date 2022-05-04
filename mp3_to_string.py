@@ -41,5 +41,6 @@ def main_func(work_dir='2009_-_Crack_The_Skye/CD_1'):
         song_list.append(mp3_data[:-1])
     f.close()
     print(song_list)
+
 if __name__ == "__main__":
     main_func()

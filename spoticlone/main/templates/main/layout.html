@@ -37,26 +37,22 @@
                 {% endif %}
             </a>
         </h1>
-
-
+        <form action="{% url 'search' %}" method="get">
+            <input name="q" type="text" placeholder="Search...">
+        </form>
         {% block content%}
-
-
         {% endblock %}
         <p>
-
         <div class="songs">
             <table border="1">
                 {% for item in sounds %}
                     {{ item.title }}
-
-                <audio controls>
-                    <source src="{{ item.path.url }}" type="audio/mp3">
-                </audio>
+                        <audio controls>
+                            <source src="{{ item.path.url }}" type="audio/mp3">
+                        </audio>
+                {% endfor %}
             </table>
         </div>
-        {% endfor %}
-
         </p>
     </main>
 </body>
