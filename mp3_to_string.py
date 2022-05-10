@@ -24,23 +24,25 @@ def main_func(work_dir='2009_-_Crack_The_Skye/CD_1'):
     os.chdir(cwd)
     f = open('soundlist.txt', 'w')
     os.chdir(work_dir)
+    album_duration = 0
     for name in mp3_dir:
         audiofile = eyed3.load(name[0])
         eyed3.log.setLevel("ERROR")
-        duration = audiofile.info.time_secs
+
+        duration = str(int(audiofile.info.time_secs))
         mp3_data = audiofile.tag.artist, \
                    audiofile.tag.album, \
                    audiofile.tag.title, \
                    str(audiofile.tag.track_num[0]), \
-                   duration_from_seconds(duration), \
+                   duration, \
                    tuple(str(audiofile.tag.genre).split(' / '))[0], \
                    str(audiofile.tag.recording_date), \
                    name[1], \
                    audiofile.tag.images[0].image_data
-        f.write(' , '.join(mp3_data[:-1]) + '\n')
+        f.write(','.join(mp3_data[:-1]) + '\n')
         song_list.append(mp3_data[:-1])
     f.close()
     print(song_list)
-
+    print(duration_from_seconds(album_duration))
 if __name__ == "__main__":
     main_func()

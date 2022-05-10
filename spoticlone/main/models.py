@@ -21,8 +21,8 @@ class Albums(models.Model):
     artist = models.ForeignKey(Artists, on_delete=models.CASCADE)
     rec_date = models.PositiveIntegerField()
     album_art = models.ImageField(upload_to=f'uploads/{artist}/title', null=True, blank=True)
-    number_of_tracks = models.PositiveIntegerField(null=True, blank=True)
-    duration = models.PositiveIntegerField(null=True, blank=True)  # duration of an album in seconds
+    number_of_tracks = models.PositiveIntegerField(default=0, null=True, blank=True)
+    duration = models.PositiveIntegerField(default=0, null=True, blank=True)  # duration of an album in seconds
     # type =
 
     def __str__(self):
@@ -47,17 +47,3 @@ class Songs(models.Model):
     class Meta:
         verbose_name = "Song"
         verbose_name_plural = "Songs"
-
-@receiver(post_save, sender=Songs)
-def update_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Albums.objects.create(user=instance)
-    instance.profile.save()
-
-'''artist = models.TextField(max_length=50)
-    album = models.TextField(max_length=50)
-    track_num = models.IntegerField(default=0)
-    duration = models.IntegerField(default=0,null=False)
-    genre = models.TextField(max_length=50)
-    recording_date = models.IntegerField(null=False)
-    cover = models.BinaryField()'''
