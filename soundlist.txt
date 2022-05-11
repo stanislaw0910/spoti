@@ -1,8 +1,8 @@
-Mastodon,Crack The Skye,Oblivion,1,5:46,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/01._Oblivion.mp3
-Mastodon,Crack The Skye,Divinations,2,3:28,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/02._Divinations.mp3
-Mastodon,Crack The Skye,Quintessence,3,5:27,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/03._Quintessence.mp3
-Mastodon,Crack The Skye,The Czar,4,10:54,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/04._The_Czar.mp3
-Mastodon,Crack The Skye,Ghost Of Karelia,5,5:25,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/05._Ghost_Of_Karelia.mp3
-Mastodon,Crack The Skye,Crack The Skye,6,5:54,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/06._Crack_The_Skye.mp3
-Mastodon,Crack The Skye,The Last Baron,7,13:01,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/07._The_Last_Baron.mp3
-Mastodon,Crack The Skye,Just Got Paid,8,3:33,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/08._Just_Got_Paid.mp3
+Mastodon,Crack The Skye,Oblivion,1,346,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/01._Oblivion.mp3
+Mastodon,Crack The Skye,Divinations,2,208,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/02._Divinations.mp3
+Mastodon,Crack The Skye,Quintessence,3,327,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/03._Quintessence.mp3
+Mastodon,Crack The Skye,The Czar,4,654,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/04._The_Czar.mp3
+Mastodon,Crack The Skye,Ghost Of Karelia,5,325,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/05._Ghost_Of_Karelia.mp3
+Mastodon,Crack The Skye,Crack The Skye,6,354,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/06._Crack_The_Skye.mp3
+Mastodon,Crack The Skye,The Last Baron,7,781,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/07._The_Last_Baron.mp3
+Mastodon,Crack The Skye,Just Got Paid,8,213,Sludge,2009,/home/stas/PycharmProjects/mp3_module/2009_-_Crack_The_Skye/CD_1/08._Just_Got_Paid.mp3

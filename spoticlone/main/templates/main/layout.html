@@ -47,9 +47,11 @@
             <table border="1">
                 {% for item in sounds %}
                     {{ item.title }}
+                        {% if item.file %}
                         <audio controls>
-                            <source src="{{ item.path.url }}" type="audio/mp3">
+                            <source src="{{ item.file.url }}" type="audio/mp3">
                         </audio>
+                        {% endif %}
                 {% endfor %}
             </table>
         </div>

@@ -2,6 +2,9 @@ from django.db import models
 #from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from .custom_storage import MyFileStorage
+
+mfs = MyFileStorage()
 
 class Artists(models.Model):
     name = models.CharField(max_length=100, default="Untitled Artist")
@@ -35,7 +38,7 @@ class Albums(models.Model):
 
 class Songs(models.Model):
     title = models.TextField(max_length=50)
-    file = models.FileField()
+    file = models.FileField(storage=mfs)
     artist = models.ForeignKey(Artists, related_name='artist', on_delete=models.CASCADE)
     album = models.ForeignKey(Albums, related_name='album', on_delete=models.CASCADE)
     duration = models.IntegerField(default=0)  # song duration in seconds

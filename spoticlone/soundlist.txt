@@ -1,0 +1,8 @@
+Mastodon,Crack The Skye,Oblivion,1,346,Sludge,2009,/home/stas/PycharmProjects/mp3_module/spoticlone/media/01._Oblivion.mp3
+Mastodon,Crack The Skye,Divinations,2,208,Sludge,2009,/home/stas/PycharmProjects/mp3_module/spoticlone/media/02._Divinations.mp3
+Mastodon,Crack The Skye,Quintessence,3,327,Sludge,2009,/home/stas/PycharmProjects/mp3_module/spoticlone/media/03._Quintessence.mp3
+Mastodon,Crack The Skye,The Czar,4,654,Sludge,2009,/home/stas/PycharmProjects/mp3_module/spoticlone/media/04._The_Czar.mp3
+Mastodon,Crack The Skye,Ghost Of Karelia,5,325,Sludge,2009,/home/stas/PycharmProjects/mp3_module/spoticlone/media/05._Ghost_Of_Karelia.mp3
+Mastodon,Crack The Skye,Crack The Skye,6,354,Sludge,2009,/home/stas/PycharmProjects/mp3_module/spoticlone/media/06._Crack_The_Skye.mp3
+Mastodon,Crack The Skye,The Last Baron,7,781,Sludge,2009,/home/stas/PycharmProjects/mp3_module/spoticlone/media/07._The_Last_Baron.mp3
+Mastodon,Crack The Skye,Just Got Paid,8,213,Sludge,2009,/home/stas/PycharmProjects/mp3_module/spoticlone/media/08._Just_Got_Paid.mp3
