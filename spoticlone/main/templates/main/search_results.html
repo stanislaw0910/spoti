@@ -2,10 +2,19 @@
 {% block title %}{{title}}{% endblock%}
 {% block content %}
  <h1>Search Results Will Be Here Soon</h1>
-{% for item in songs %}
-  {{ item.title }}
+{{ query }}
+{% for song in songs %}
+  {{ song.title }}
     <audio controls>
-        <source src="{{ item.path.url }}" type="audio/mp3">
+        <source src="{{ song.file.url }}" type="audio/mp3">
     </audio>
+{% endfor %}
+<br>
+{% for artist in artists %}
+    <a href="artist/{{artist.id}}">{{ artist.name }}</a>
+{% endfor %}
+<br>
+{% for album in albums %}
+    <a href="album/{{album.id}}">{{ album.title }}</a>
 {% endfor %}
 {% endblock %}

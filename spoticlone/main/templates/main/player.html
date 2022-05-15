@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Custom Podcasts in your blog." />
+    <title>Your Songs</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <!--<script src="{% static 'main/js/player.js' %}"></script>-->
+    <style>
+      /* Here we can change the look and feel */
+    </style>
+  </head>
+
+  <body>
+    <!-- This is a div for audiowave to be mounted by wavesurfer -->
+    <div id="waveform"></div>
+
+    <!-- Then we have some buttons for playing, stopping and pausing
+ Here we are using pure css classes and font awesome icons
+  Each button has onclick event assigned that we program later -->
+    <button
+      id="play"
+      class="pure-button pure-button-secondary"
+      onclick="startRecording()"
+    >
+      <i class="fa fa-play-circle"></i> Play
+    </button>
+    <button
+      id="pause"
+      class="pure-button pure-button-secondary"
+      onclick="pauseRecording()"
+    >
+      <i class="fa fa-pause"></i> Pause
+    </button>
+    <button
+      id="stop"
+      class="pure-button pure-button-primary"
+      onclick="stopRecording()"
+    >
+      <i class="fa fa-stop"></i> Stop
+    </button>
+    <script>
+    let trackUrl = '{{ track_url|safe }}';
+    var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        scrollParent: true
+    });
+
+    wavesurfer.load(trackUrl);
+
+    function startRecording() {
+      wavesurfer.play()
+    };
+    function pauseRecording() {
+      wavesurfer.pause()
+    };
+    function stopRecording() {
+      wavesurfer.stop()
+    };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.53/wavesurfer.min.js"></script>
+  </body>
+</html>

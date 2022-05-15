@@ -6,11 +6,12 @@
 <link rel="stylesheet" href="{% static 'main/css/login.css' %}">
 {% endblock %}
 {% block content %}
+  <div class="info">
   Some info of you,
   {{user.get_username}}
-  {{user.profile.get_email}}
-  {{user.profile.get_phone_number}}
+  {{user.profile.email}}
   <br>
   <a href="{% url 'logout' %}">LogOut</a>
+  </div>
 {% endblock %}
 

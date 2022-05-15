@@ -1,3 +1,5 @@
+import os
+
 from django.core.files import File
 from main.models import Songs, Artists, Albums
 from django.core.management import BaseCommand
@@ -24,8 +26,3 @@ class Command(BaseCommand):
                     print(f'Already exists {tags[2]}')
 
                 r.close()
-                album.duration += song.duration
-                album.save(update_fields=['duration'])
-                if song.track_number > album.number_of_tracks:
-                    album.number_of_tracks=song.track_number
-                    album.save()

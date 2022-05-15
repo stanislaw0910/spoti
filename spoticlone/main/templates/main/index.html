@@ -2,10 +2,23 @@
 {% block title %}{{title}}{% endblock%}
 {% block content %}
 
-    <div class="features">
-        <h1>{{title}}</h1>
-        <p>Welcome {{request.user.get_username}}!</p>
-
-
+    <div class="welcome">
+        <h2><p>Welcome {{request.user.get_username}}!</p></h2>
     </div>
+    <main>
+        <div class="songs">
+        <ul>
+            {% for item in sounds %}
+                {% if item.file %}
+                    <li>
+                    {{ item.track_number }}
+                    <audio controls>
+                        <source src="{{ item.file.url }}" type="audio/mp3">
+                    </audio>
+                    {{ item.title }} {{ item.artist.name }} {{ item.song_duration }}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </main>
 {% endblock %}

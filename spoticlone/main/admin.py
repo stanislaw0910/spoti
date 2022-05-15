@@ -12,7 +12,7 @@ class ArtistsAdmin(admin.ModelAdmin):
 
 
 class AlbumsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'genre', 'artist', 'rec_date', 'number_of_tracks', 'duration']
+    list_display = ['id', 'title', 'genre', 'artist', 'rec_date', 'number_of_tracks', 'album_duration']
 
 
 admin.site.register(Songs, SongsAdmin)

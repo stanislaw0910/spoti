@@ -1,0 +1,9 @@
+{% extends 'main/layout.html' %}
+{% block title %}{{album.title}}{% endblock%}
+{% block content %}
+<main>
+    <h1> Album page </h1>
+    {{ album.title }}
+    {{ album.album_duration }}
+    </main>
+{% endblock %}
