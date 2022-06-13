@@ -18,17 +18,16 @@
 <body>
     <aside>
         <form action="{% url 'search' %}" method="get">
-                <input name="q" type="text" placeholder="Search...">
+                <input name="q" type="text" >
             </form>
-    <aside1>
+
         <ul>
             <a href="{% url 'home' %}"><li><i class="fas fa-home"></i>Home</li></a>
             <a href="{% url 'about' %}"><li><i class="fas fa-address-card"></i>About Us</li></a>
             <a href=""><li><i class="far fa-clock"></i>Recently Played</li></a>
-            <a href=""><li><i class="far fa-heart"></i>Favorites</li></a>
+            <a href="{% url 'favorites' %}"><li><i class="far fa-heart"></i>Favorites</li></a>
             <a href=""><li><i class="fas fa-paper-plane"></i>Contacts</li></a>
         </ul>
-    </aside1>
     </aside>
     <main>
         <h1 class="auth">
@@ -40,9 +39,10 @@
                 {% endif %}
             </a>
         </h1>
-
-        {% block content%}
-        {% endblock %}
+        <div class="block">
+            {% block content%}
+            {% endblock %}
+        </div>
     </main>
 </body>
 </html>

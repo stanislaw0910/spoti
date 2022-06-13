@@ -8,7 +8,7 @@
     <main>
         <div class="songs">
         <ul>
-            {% for item in sounds %}
+            {% for item in songs %}
                 {% if item.file %}
                     <li>
                     {{ item.track_number }}
@@ -16,9 +16,11 @@
                         <source src="{{ item.file.url }}" type="audio/mp3">
                     </audio>
                     {{ item.title }} {{ item.artist.name }} {{ item.song_duration }}
+                        <i class="far fa-heart"></i>
                     </li>
                 {% endif %}
             {% endfor %}
         </ul>
+        </div>
     </main>
 {% endblock %}

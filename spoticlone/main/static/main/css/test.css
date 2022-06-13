@@ -4,22 +4,23 @@ body {
 aside{
     float: left;
     font-size: medium;
+    font-weight: 700;
     background: #181818;
     width: 16%;
-    padding: 1%;
+    padding: 0.5%;
     height: 100vmax;
     border-right: 5 px solid #4d4d4d;
     color: #fff;
     position: fixed;
 }
 aside ul {
+    font-size: 19px;
     list-style:none
     text-align:left;
-    padding:0;
+    padding:0.5%;
 }
 aside ul li {
-
-    font-weight: 700;
+    font-weight: 600;
     color: #c0c0c0;
     display: block;
     margin-top:20px;
@@ -31,18 +32,18 @@ aside ul li:hover, aside ul a:hover {
     transform: scale(1.05);
 }
 main {
-    color:#fff;
+    color:#eeeeee;
 }
-main .welcome h2 { font-size: 50px;}
-main .welcome p {max-width: 400px; margin: 20px auto;}
+.welcome h2 { font-size: 50px;}
+.welcome p {max-width: 400px; margin: 20px auto;}
 
-main .auth {
+.auth {
     text-align:right;
-    margin-right:150px;
+    margin-right:30px;
     text-decoration: none;
 }
-main .auth a{
-    font-size:large;
+.auth a{
+    font-size:30px;
     font-weight: 800;
     color: #c0c0c0;
     display: block;
@@ -50,19 +51,20 @@ main .auth a{
     transition: transform .2s ease;
 
 }
-main .auth a:hover{
+.auth a:hover{
     color:#008000;
     text-decoration: none;
     transform: scale(1.01);
 
 }
 
-main .songs {
-    margin-left: 15%
+.block {
+    margin-left: 16%
 }
-main .songs ul {
+
+.songs ul {
 }
-main .songs ul li {
+.songs ul li {
     list-style-type: none;
     margin: 0 10px 10px 0;
     vertical-align:top;

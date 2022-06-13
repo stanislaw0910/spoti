@@ -4,8 +4,8 @@ from .models import Songs, Albums, Artists
 from django.db.models import Q
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from django.views.generic import TemplateView, DetailView
-
+from django.views.generic import TemplateView, DetailView, ListView
+from itertools import chain
 
 class RenderHTMLPlayer(TemplateView):
     template_name = "main/player.html"
@@ -30,30 +30,49 @@ class AlbumView(DetailView):
     context_object_name = 'album'
 
 
-def index(request):
-    songs = Songs.objects.all()
-    return render(request, 'main/index.html', {'sounds': songs, 'title': 'Main page'})
+class Index(ListView):
+    model = Songs
+    template_name = 'main/index.html'
+    context_object_name = 'songs'
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['title']='Main page'
+        return context
 
 
-def about(request):
-    songs = Songs.objects.all()
-    return render(request, 'main/about.html', {'songs': songs})
+class About(TemplateView):
+    template_name = 'main/about.html'
 
 
-def search(request):
-    if request.method == 'GET':
-        query = request.GET.get('q')
-        songs_list = Songs.objects.filter(
-            Q(title__icontains=query)
+class SearchResultsView(ListView):
+    template_name = "main/search_results.html"
+    model = Songs
+
+    def get_context_data(self, *args, **kwargs):
+        context=super().get_context_data(*args, **kwargs)
+        context['query']=self.request.GET.get('q')
+        context['songs']=Songs.objects.filter(
+            Q(title__icontains=context['query'])
         )
-        albums_list = Albums.objects.filter(
-            Q(title__icontains=query)
+        context['albums']=Albums.objects.filter(
+            Q(title__icontains=context['query'])
         )
-        artists_list = Artists.objects.filter(
-            Q(name__icontains=query)
+        context['artists']=Artists.objects.filter(
+            Q(name__icontains=context['query'])
         )
-    return render(request, 'main/search_results.html', {'songs': songs_list, 'albums': albums_list,
-                                                        'artists': artists_list, 'query': query})
+        return context
 
 
+class FavoritesView(TemplateView):
+    template_name = 'main/favorites.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(FavoritesView, self).get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            user = self.request.user.profile
+            context['songs'] = [object.song for object in user.favoritesong_set.all()]
+            context['artists'] = [object.artist for object in user.favoriteartist_set.all()]
+            context['albums']= [object.album for object in user.favoritealbum_set.all()]
+        return context
 

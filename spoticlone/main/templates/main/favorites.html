@@ -1,11 +1,9 @@
 {% extends 'main/layout.html' %}
 {% block title %}{{title}}{% endblock %}
 {% block content %}
-{% for item in results %}
-    {{ item }}
-{% endfor %}
+
 {% if songs %}
-        <h3>Songs founded for "{{ query }}":</h3><br>
+        <h3>Songs:</h3><br>
     <div class="songs">
         <ul>
             {% for item in songs %}
@@ -24,7 +22,7 @@
 {% endif %}
 <br>
 {% if artists %}
-    <h3>Artists founded for "{{ query }}":</h3><br>
+    <h3>Artists:</h3><br>
     <div class="artists">
     {% for artist in artists %}
         <a href="artist/{{artist.id}}">{{ artist.name }}</a>
@@ -33,7 +31,7 @@
 {% endif %}
 <br>
 {% if albums %}
-    <h3>Albums founded for "{{ query }}":</h3><br>
+    <h3>Albums :</h3><br>
     <div class="albums">
     {% for album in albums %}
         <a href="album/{{album.id}}">{{ album.title }}</a>

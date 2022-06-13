@@ -22,7 +22,14 @@ def main_func(work_dir='media'):
     mp3_dir.sort()
     song_list = []
     os.chdir(cwd)
-    f = open('soundlist.txt', 'w')
+    with open('/home/stas/PycharmProjects/mp3_module/spoticlone/image.jpg', 'wb') as f:
+        os.chdir(work_dir)
+        filename = mp3_dir[0][0]
+        audiofile=eyed3.load(filename)
+        eyed3.log.setLevel("ERROR")
+        f.write(audiofile.tag.images[0].image_data)
+        print(len(audiofile.tag.images))
+    '''f = open('soundlist.txt', 'w')
     os.chdir(work_dir)
     for name in mp3_dir:
         audiofile = eyed3.load(name[0])
@@ -39,8 +46,6 @@ def main_func(work_dir='media'):
                    audiofile.tag.images[0].image_data
         f.write(','.join(mp3_data[:-1]) + '\n')
         song_list.append(mp3_data[:-1])
-    f.close()
-    #print(song_list)
-    #print(duration_from_seconds(album_duration))
+    f.close()'''
 if __name__ == "__main__":
     main_func()

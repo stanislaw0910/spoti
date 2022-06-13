@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
-
+from user.models import Profile
+from django.conf import settings
 from .custom_storage import MyFileStorage
 import datetime
 
@@ -47,6 +48,10 @@ class Albums(models.Model):
 
 
 class Songs(models.Model):
+    '''def generate_album_folder(self, filename):
+        name = f"{self.artist}/{self.album}/{filename.split('/')[-1]}"
+        return name'''
+
     title = models.TextField(max_length=50)
     artist = models.ForeignKey(Artists, related_name='songs', on_delete=models.CASCADE)
     album = models.ForeignKey(Albums, related_name='songs', on_delete=models.CASCADE)
@@ -66,15 +71,32 @@ class Songs(models.Model):
         verbose_name_plural = "Songs"
 
 
-'''class FavoriteBase(models.Model):
+class FavoriteBase(models.Model):
     class Meta:
         abstract=True
 
-    user=models.ForeignKey(User, verbose_name="Пользователь")
+    user=models.ForeignKey(Profile, verbose_name="Пользователь", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user.username
+        return str(self.user)
 
 
 class FavoriteArtist(FavoriteBase):
-    artist = models.ForeignKey'''
+    artist = models.ForeignKey(Artists, related_name='favorite_artist', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.user}_{self.artist}'
+
+
+class FavoriteSong(FavoriteBase):
+    song = models.ForeignKey(Songs, related_name='favorite_song', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.user}_{self.song}'
+
+
+class FavoriteAlbum(FavoriteBase):
+    album = models.ForeignKey(Albums, related_name='favorite_album', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.user}_{self.album}'
